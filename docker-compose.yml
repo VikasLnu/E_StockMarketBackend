@@ -1,0 +1,17 @@
+version: '3.4'
+
+services:
+
+  stockapi:
+    image: ${DOCKER_REGISTRY-}stockapi
+    build:
+      context: .
+      dockerfile: StockServices/Dockerfile
+
+
+  companyapi:
+    image: ${DOCKER_REGISTRY-}companyapi
+    build:
+      context: .
+      dockerfile: CompanyServices/Dockerfile
+

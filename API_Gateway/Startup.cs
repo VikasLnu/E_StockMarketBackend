@@ -39,7 +39,8 @@ namespace API_Gateway
 
             if (env.IsDevelopment())
             {
-                app.UseDeveloperExceptionPage();
+                //app.UseDeveloperExceptionPage();
+                app.UseMiddleware<ExceptionMiddleware>();
             }
             else
             {
@@ -55,15 +56,18 @@ namespace API_Gateway
                 .AllowAnyMethod()
                 .AllowAnyHeader();
             });
-            app.UseOcelot();
-           
-            app.Run(async (context) => {
-                await context.Response.WriteAsync("API Gateway is running....");
-            });
+
+            
+            app.UseOcelot().Wait();
+          
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
             });
+            app.Run(async (context) => {
+                await context.Response.WriteAsync("API Gateway is running....");
+            });
+
         }
     }
 }

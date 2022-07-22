@@ -14,10 +14,10 @@ namespace CompanyServices
     {
         public static void Main(string[] args)
         {
-            Log.Logger = new LoggerConfiguration()
-                //.WriteTo.File(path: "Log/{Date}.txt")
-                .WriteTo.Http(requestUri: "http://127.0.0.1:8302")
-                .CreateLogger();
+            //Log.Logger = new LoggerConfiguration()
+                ////.WriteTo.File(path: "Log/{Date}.txt")
+                //.WriteTo.Http(requestUri: "http://127.0.0.1:8302")
+                //.CreateLogger();
             CreateHostBuilder(args).Build().Run();
         }
 

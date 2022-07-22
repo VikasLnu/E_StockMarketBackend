@@ -5,12 +5,12 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 49925
+          "Host": "companyapifunction.azurewebsites.net",
+          "Port": 80
         }
       ],
       "UpstreamPathTemplate": "/api/v1.0/market/company/getall",
-      "UpstreamHttpMethod": [ "GET" ]
+      "UpstreamhttpMethod": [ "GET" ]
     },
     {
       "DownstreamPathTemplate": "/api/home/{id}",
@@ -18,87 +18,88 @@
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 49925
+          "Port": 56921
         }
       ],
       "UpstreamPathTemplate": "/api/v1.0/market/company/info/{id}",
-      "UpstreamHttpMethod": [ "GET" ]
+      "UpstreamhttpMethod": [ "GET" ]
     },
     {
       "DownstreamPathTemplate": "/api/home/delete/{id}",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 49925
+          "Host": "companyapifunction.azurewebsites.net",
+          "Port": 80
         }
       ],
       "UpstreamPathTemplate": "/api/v1.0/market/company/delete/{id}",
-      "UpstreamHttpMethod": [ "DELETE" ]
+      "UpstreamhttpMethod": [ "DELETE" ]
     },
     {
       "DownstreamPathTemplate": "/api/home",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 49925
+          "Host": "companyapifunction.azurewebsites.net",
+          "Port": 80
         }
       ],
       "UpstreamPathTemplate": "/api/v1.0/market/company/register",
-      "UpstreamHttpMethod": [ "POST" ]
+      "UpstreamhttpMethod": [ "POST" ]
     },
     {
       "DownstreamPathTemplate": "/api/home/companieslist",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 49925
+          "Host": "companyapifunction.azurewebsites.net",
+          "Port": 80
         }
       ],
       "UpstreamPathTemplate": "/api/v1.0/market/company/list",
-      "UpstreamHttpMethod": [ "GET" ]
+      "UpstreamhttpMethod": [ "GET" ]
     },
     {
       "DownstreamPathTemplate": "/api/home/{id}",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 27853
+          "Host": "stockapifunction.azurewebsites.net",
+          "Port": 80
         }
       ],
       "UpstreamPathTemplate": "/api/v1.0/market/stock/add/{id}",
-      "UpstreamHttpMethod": [ "POST" ]
+      "UpstreamhttpMethod": [ "POST" ]
     },
     {
       "DownstreamPathTemplate": "/api/home/{id}/{startdate}/{enddate}",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 27853
+          "Host": "stockapifunction.azurewebsites.net",
+          "Port": 80
         }
       ],
       "UpstreamPathTemplate": "/api/v1.0/market/stock/{id}/{startdate}/{enddate}",
-      "UpstreamHttpMethod": [ "GET" ]
+      "UpstreamhttpMethod": [ "GET" ]
     },
     {
       "DownstreamPathTemplate": "/api/home/",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 27853
+          "Host": "stockapifunction.azurewebsites.net",
+          "Port": 80
         }
       ],
       "UpstreamPathTemplate": "/api/v1.0/market/stock/getall",
-      "UpstreamHttpMethod": [ "GET" ]
+      "UpstreamhttpMethod": [ "GET" ]
     }
-  ],
+  ]
+  ,
   "GlobalConfiguration": {
-    "BaseUrl": "http://localhost:44382"
+    "BaseUrl": "apigateway"
   }
 
 }  

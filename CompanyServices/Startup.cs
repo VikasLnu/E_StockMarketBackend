@@ -52,23 +52,29 @@ namespace CompanyServices
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory loggerFactory)
         {
-          //  loggerFactory.AddFile("Logs/{Date}.txt");
+          loggerFactory.AddFile("Logs/{Date}.txt");
         
             if (env.IsDevelopment())
             {
-                //  app.UseDeveloperExceptionPage();
-                app.UseMiddleware<ExceptionMiddleware>();
-                app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "CompanyServices v1"));
+                app.UseDeveloperExceptionPage();
+               
+                
             }
             else
             {
                 app.UseMiddleware<ExceptionMiddleware>();
             }
-
+			app.UseSwagger();
+            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "CompanyServices v1"));
             app.UseRouting();
 
-            app.UseAuthorization();
+            app.UseCors(builder =>
+            {
+                builder
+                .AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader();
+            });
 
             app.UseEndpoints(endpoints =>
             {

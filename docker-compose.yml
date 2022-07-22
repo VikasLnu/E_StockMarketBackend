@@ -1,6 +1,18 @@
 version: '3.4'
 
 services:
+  api_gateway:
+    image: ${DOCKER_REGISTRY-}apigateway
+    build:
+      context: .
+      dockerfile: API_Gateway/Dockerfile
+
+  companyapi:
+    image: ${DOCKER_REGISTRY-}companyapi
+    build:
+      context: .
+      dockerfile: CompanyServices/Dockerfile
+
 
   stockapi:
     image: ${DOCKER_REGISTRY-}stockapi
@@ -8,10 +20,5 @@ services:
       context: .
       dockerfile: StockServices/Dockerfile
 
-
-  companyapi:
-    image: ${DOCKER_REGISTRY-}companyapi
-    build:
-      context: .
-      dockerfile: CompanyServices/Dockerfile
+  
 

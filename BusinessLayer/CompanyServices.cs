@@ -30,33 +30,7 @@ namespace BusinessLayer
             
         }
 
-        //public async Task<List<CompanyReq>> Get()
-        //{
-
-        //    var data = await _companyCollection.Find(new BsonDocument()).ToListAsync();
-        //    var companies = data.Select(x => new CompanyReq { ComapanyName = x.ComapanyName,
-        //        CompanyCEO = x.CompanyCEO, CompanyTurnover = x.CompanyTurnover,
-        //        CompanyWebsite = x.CompanyWebsite, Exchange = x.Exchange, CompanyCode = x.CompanyCode }).ToList();
-        //    foreach (var item in companies)
-        //    {
-        //        FilterDefinition<Stock> filter = Builders<Stock>.Filter.Eq("CompanyId", item.CompanyCode);
-        //        item.Price = _stockCollection.Find(filter).SortByDescending(x=>x.CreatedDate).FirstOrDefault()?.Price??0;
-        //    }
-
-        //    return companies;
-
-        //}
-        //public async Task<CompanyReq> Get(string id)
         
-        //{
-        //    var data = await _companyCollection.Find(x=>x.CompanyCode.Equals(id)).FirstOrDefaultAsync();
-            
-        //    var com = _mapper.Map<CompanyReq>(data);
-        //    FilterDefinition<Stock> filter = Builders<Stock>.Filter.Eq("CompanyId", id);
-        //    com.Price = _stockCollection.Find(filter).SortByDescending(x => x.CreatedDate).FirstOrDefault()?.Price??0;
-        //    return com;
-
-        //}
         public async Task RegisterCompany(CompanyReq company)
         {
             var com = _mapper.Map<Company>(company);
@@ -103,10 +77,11 @@ namespace BusinessLayer
                 if (company != null)
                 {
                     companyRes = _mapper.Map<CompanyRes>(company);
-                    //FilterDefinition<Stock> filter = Builders<Stock>.Filter.Eq("CompanyId", id);
-                    //data.Stocks = _stockCollection.Find(filter).SortByDescending(x => x.CreatedDate.FirstOrDefault();
-                    companyRes.Stocks = _stockCollection.AsQueryable().Where(x => x.CompanyId.Equals(id)).OrderByDescending(x => x.CreatedDate).Select(x => new StockRes { Price = x.Price, CreatedDate = x.CreatedDate }).ToList();
-                    
+                    FilterDefinition<Stock> filter = Builders<Stock>.Filter.Eq("CompanyId", id);
+                    //data.Stocks = await _stockCollection.Find(filter).SortByDescending(x => x.CreatedDate).ToListAsync();
+                    companyRes.Stocks = _stockCollection.AsQueryable().Where(x => x.CompanyId.Equals(id)).Select(x => new StockRes { Price = x.Price, CreatedDate = x.CreatedDate }).ToList();
+                    companyRes.Stocks = companyRes.Stocks.OrderByDescending(x => x.CreatedDate).ToList();
+
                 }
                 return companyRes;
 
